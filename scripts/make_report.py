@@ -375,7 +375,7 @@ def main():
         ["评测命令", "见 README 第 6 节；Base/Final 独立进程，object id 0–9"],
         ["图像预处理", "configs/policy_preprocess.json：gaussian_blur_sigma=1.5（Base/Final 相同）"],
         ["逐 episode 结果", "results/episodes.csv；汇总 results/results.csv"],
-        ["视频", "results/videos/；代表视频清单 video_links.md"],
+        ["视频", "results/videos/（全部 40 个；代表视频见 README 7.2）"],
         ["组员分工", "胥昊天：项目统筹、环境/数据管线、LoRA 训练与最终评测、报告整合；"
                      "曹奕伦：BridgeData 筛选与 RLDS 构建、训练日志与验证 loss 分析；"
                      "徐厚泽：SimplerEnv 评测脚本、初始状态清单与逐 episode 结果汇总；"

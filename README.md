@@ -36,31 +36,13 @@
 ```text
 MLwork/
 ├── README.md
-├── PLAN.md                  # 计划与进度
-├── worklog.md               # 环境版本与操作时间线
 ├── constraints.txt          # torch/torchvision/numpy 版本锁
-├── configs/
-│   └── eval_states.json     # 预注册评测初始状态（Base/Final 共用）
-├── scripts/
-│   ├── env.sh
-│   ├── download_bridge_subset.py
-│   ├── bridge_subset_dataset.py
-│   ├── build_rlds.py
-│   ├── check_data.py
-│   ├── train_openvla.py
-│   └── evaluate_openvla.py
-├── results/
-│   ├── README.md            # 结果目录说明
-│   ├── results.csv          # Base/Final 汇总
-│   ├── episodes.csv         # 40 个 episode 明细
-│   ├── eval_base.log
-│   ├── eval_final.log
-│   ├── videos/              # Base/Final × T1/T2 共 40 个
-│   ├── train/               # train_log.txt, val_loss.csv
-│   ├── analysis/            # dev_selection.csv, diagnostics_real_bridge.txt
-│   └── archive/             # sharp/bare-prompt/ablation 原始记录
-├── checkpoint_link.txt      # Final adapter 下载链接（提交时填写）
-└── third_party/             # gitignore；按下方版本克隆
+├── configs/                 # eval_states.json, policy_preprocess.json
+├── scripts/                 # 数据、训练、评测、报告生成脚本
+├── report/REPORT.pdf        # 6 页报告
+├── results/                 # 最终结果/训练/分析/归档（见第 7 节）
+├── checkpoint_link.txt      # Final adapter 下载链接（待上传）
+└── third_party/             # gitignore；按第 4 节版本克隆
 ```
 
 ## 3. 数据
@@ -94,7 +76,7 @@ python scripts/check_data.py --raw data/bridge_subset/raw --num 5
 
 ## 4. 环境
 
-主要版本（完整记录见 `worklog.md`）：
+主要版本：
 
 | 组件 | 版本 |
 |---|---|
@@ -362,8 +344,10 @@ T1 没有改善（dev 1/3 vs 1/3），且正式 T1 为 **0/10**，比当前 Fina
 - 环境版本、命令、初始状态清单、逐 episode CSV、视频和训练日志均已放入仓库。
 - 公开代码仓库：https://github.com/xht03/2026ML
 - 实验报告：`report/REPORT.pdf`（6 页，含数据样本、接口验证、案例分析和参考文献）。
-- Final adapter 下载链接：见 `checkpoint_link.txt`。
+- 结果文件：`results/results.csv`、`results/episodes.csv`、`results/videos/`、
+  `results/train/`、`results/analysis/`、`results/archive/`。
+- Final adapter 下载链接：见 `checkpoint_link.txt`（待上传后回填）。
 - 基础模型：`openvla/openvla-7b`。
-- 依赖与版本：见 `worklog.md`。
-- 代表视频清单：`video_links.md`。
-- 提交前待办（组员、仓库、checkpoint 上传）：见 `SUBMISSION.md`。
+- 依赖与版本：见第 4 节。
+- 代表视频：见 7.2；全部 40 个视频在 `results/videos/`。
+- 组员与分工：见顶部表格；checkpoint 上传后更新本节和 `checkpoint_link.txt`。
