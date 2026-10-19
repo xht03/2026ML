@@ -136,7 +136,8 @@ def main():
     p.paragraph_format.space_after = Pt(10)
     r = p.add_run(
         "机器学习课程大作业 · B 类（工程实践型）\n"
-        "姓名/学号：待填写  |  组员：待填写  |  2026-10-19"
+        "姓名/学号：胥昊天（学号待填写）  |  "
+        "组员：曹奕伦、徐厚泽、彭泽宇、刘翔  |  2026-10-19"
     )
     set_run_font(r, size=9.5, color=GRAY)
 
@@ -364,7 +365,7 @@ def main():
     # 8
     heading(doc, "8. 复现信息与分工")
     table(doc, ["项目", "内容"], [
-        ["公开代码仓库", "待填写（提交前上传并回填链接）"],
+        ["公开代码仓库", "https://github.com/xht03/2026ML"],
         ["Final checkpoint", "LoRA adapter，约 484 MB；下载链接见 checkpoint_link.txt（待上传）"],
         ["Base 模型", "openvla/openvla-7b（Hugging Face）"],
         ["关键依赖", "PyTorch 2.7.1+cu128、transformers 4.40.1、tokenizers 0.19.1、timm 0.9.10、"
@@ -374,7 +375,9 @@ def main():
         ["图像预处理", "configs/policy_preprocess.json：gaussian_blur_sigma=1.5（Base/Final 相同）"],
         ["逐 episode 结果", "results/episodes.csv；汇总 results/results.csv"],
         ["视频", "results/videos_openvla/；代表视频清单 video_links.md"],
-        ["组员分工", "待填写：数据/环境、训练、评测、报告"],
+        ["组员分工", "胥昊天：环境/数据/训练/评测/报告整合；"
+                     "曹奕伦、徐厚泽、彭泽宇、刘翔：数据分析、视频审查、报告校对"
+                     "（具体分工可按组内实际情况调整）"],
     ], widths=[3.4, 14.0])
     para(doc,
          "Final adapter 加载方式：PeftModel.from_pretrained(base, adapter)，其中 base 为 "
