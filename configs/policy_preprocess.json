@@ -1,0 +1,8 @@
+{
+  "description": "Base 与 Final 共用的推理图像预处理。用于缩小真实相机图像与 SimplerEnv 渲染图像之间的锐度/成像域差异。",
+  "gaussian_blur_sigma": 1.5,
+  "applies_to": ["base", "final"],
+  "selection": "sigma 仅在开发初始状态 object id 10-12（T1/T2）上选择；正式评测 object id 0-9 未参与选择。",
+  "implementation": "third_party/SimplerEnv/simpler_env/policies/openvla/openvla_model.py 中在 resize 之后、送入 processor 之前执行 cv2.GaussianBlur(image, (0,0), sigma)。",
+  "evidence": "不加模糊时 Base/Final 在开发集 0/6；sigma=1.5 时 Base 2/6、Final 1/6，并且视频中夹爪会闭合、勺子被放到毛巾上。"
+}

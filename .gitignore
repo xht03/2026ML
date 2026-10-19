@@ -1,0 +1,22 @@
+# 环境
+venv_openvla/
+.venv/
+.cache/
+__pycache__/
+*.pyc
+
+# 第三方代码：README 记录仓库与 commit
+third_party/
+
+# 大文件：数据与权重
+downloads/
+data/
+checkpoints/
+
+# 训练/评测中间产物
+wandb/
+runs/
+results/dev/
+
+# 课程参考材料（不随仓库公开）
+26ml课程pj讲解.pdf

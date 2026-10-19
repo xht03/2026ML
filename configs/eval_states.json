@@ -1,0 +1,65 @@
+{
+  "description": "正式评测初始状态清单（在跑任何正式评测之前固定）。object episode id 0-9 只用于正式评测；10-23 只用于开发/冒烟测试。Base 与 Final 必须使用完全相同的清单。",
+  "simpler_env": {
+    "repo": "https://github.com/simpler-env/SimplerEnv",
+    "commit": "eddb5690749a1e34267807c0f7b5eede323918d7",
+    "control_freq": 5,
+    "sim_freq": 500,
+    "obj_variation_mode": "episode",
+    "note": "环境本身不暴露显式随机种子；初始条件由 obj_episode_id + robot init 唯一确定。评测脚本另设 env_seed 用于 Python/NumPy 随机源并记录。"
+  },
+  "tasks": {
+    "widowx_spoon_on_towel": {
+      "env_name": "PutSpoonOnTableClothInScene-v0",
+      "scene_name": "bridge_table_1_v1",
+      "robot": "widowx",
+      "rgb_overlay_path": "ManiSkill2_real2sim/data/real_inpainting/bridge_real_eval_1.png",
+      "robot_init": {"x": 0.147, "y": 0.028, "quat_center": [0, 0, 0, 1]},
+      "max_episode_steps": 60,
+      "instruction": "put the spoon on the towel",
+      "formal_episodes": [
+        {"episode": 0, "obj_episode_id": 0, "env_seed": 0, "model_seed": 0},
+        {"episode": 1, "obj_episode_id": 1, "env_seed": 1, "model_seed": 0},
+        {"episode": 2, "obj_episode_id": 2, "env_seed": 2, "model_seed": 0},
+        {"episode": 3, "obj_episode_id": 3, "env_seed": 3, "model_seed": 0},
+        {"episode": 4, "obj_episode_id": 4, "env_seed": 4, "model_seed": 0},
+        {"episode": 5, "obj_episode_id": 5, "env_seed": 5, "model_seed": 0},
+        {"episode": 6, "obj_episode_id": 6, "env_seed": 6, "model_seed": 0},
+        {"episode": 7, "obj_episode_id": 7, "env_seed": 7, "model_seed": 0},
+        {"episode": 8, "obj_episode_id": 8, "env_seed": 8, "model_seed": 0},
+        {"episode": 9, "obj_episode_id": 9, "env_seed": 9, "model_seed": 0}
+      ],
+      "dev_episodes": [
+        {"episode": 0, "obj_episode_id": 10, "env_seed": 10, "model_seed": 0},
+        {"episode": 1, "obj_episode_id": 11, "env_seed": 11, "model_seed": 0},
+        {"episode": 2, "obj_episode_id": 12, "env_seed": 12, "model_seed": 0}
+      ]
+    },
+    "widowx_put_eggplant_in_basket": {
+      "env_name": "PutEggplantInBasketScene-v0",
+      "scene_name": "bridge_table_1_v2",
+      "robot": "widowx_sink_camera_setup",
+      "rgb_overlay_path": "ManiSkill2_real2sim/data/real_inpainting/bridge_sink.png",
+      "robot_init": {"x": 0.127, "y": 0.06, "quat_center": [0, 0, 0, 1]},
+      "max_episode_steps": 120,
+      "instruction": "put eggplant into yellow basket",
+      "formal_episodes": [
+        {"episode": 0, "obj_episode_id": 0, "env_seed": 0, "model_seed": 0},
+        {"episode": 1, "obj_episode_id": 1, "env_seed": 1, "model_seed": 0},
+        {"episode": 2, "obj_episode_id": 2, "env_seed": 2, "model_seed": 0},
+        {"episode": 3, "obj_episode_id": 3, "env_seed": 3, "model_seed": 0},
+        {"episode": 4, "obj_episode_id": 4, "env_seed": 4, "model_seed": 0},
+        {"episode": 5, "obj_episode_id": 5, "env_seed": 5, "model_seed": 0},
+        {"episode": 6, "obj_episode_id": 6, "env_seed": 6, "model_seed": 0},
+        {"episode": 7, "obj_episode_id": 7, "env_seed": 7, "model_seed": 0},
+        {"episode": 8, "obj_episode_id": 8, "env_seed": 8, "model_seed": 0},
+        {"episode": 9, "obj_episode_id": 9, "env_seed": 9, "model_seed": 0}
+      ],
+      "dev_episodes": [
+        {"episode": 0, "obj_episode_id": 10, "env_seed": 10, "model_seed": 0},
+        {"episode": 1, "obj_episode_id": 11, "env_seed": 11, "model_seed": 0},
+        {"episode": 2, "obj_episode_id": 12, "env_seed": 12, "model_seed": 0}
+      ]
+    }
+  }
+}

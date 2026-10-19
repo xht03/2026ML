@@ -1,0 +1,15 @@
+2026-10-19 17:32:01.509780: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-10-19 17:32:01.547332: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-10-19 17:32:01.547371: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-10-19 17:32:01.548384: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-10-19 17:32:01.553987: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX_VNNI AMX_TILE AMX_INT8 AMX_BF16 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-10-19 17:32:02.172288: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+instruction: pick up blue spoon and place on right side of towel frames 39 actions (39, 7)
+close frame indices: [10 11 12 13 14 15 16 17 18 19]
+picked frames: [0, 19, 10]
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:00,  4.98it/s]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:00<00:00,  5.39it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00,  5.63it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00,  5.52it/s]
+frame 0: GT=[-0.00279999990016222, -0.0024999999441206455, -0.014100000262260437, -0.024900000542402267, 0.03610000014305115, 0.002199999988079071, 1.0]  PRED=[-0.0029, -0.0024, -0.014, -0.025, 0.0361, -0.0001, 0.9961]
+frame 19: GT=[0.00039999998989515007, -0.021800000220537186, -0.021800000220537186, 0.05829999968409538, 0.051899999380111694, 0.11180000007152557, 0.0]  PRED=[0.0005, -0.0218, -0.0174, 0.0043, 0.0521, -0.0275, 0.0]
+frame 10: GT=[0.004000000189989805, 0.006899999920278788, -0.0013000000035390258, -0.01600000075995922, -0.012199999764561653, 0.004800000227987766, 0.0]  PRED=[0.004, -0.0024, -0.0005, 0.0037, 0.0006, -0.0097, 0.0]
+EXIT=0

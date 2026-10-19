@@ -1,0 +1,21 @@
+model,task,episode,obj_episode_id,env_seed,model_seed,success,steps,instruction,error,video
+base,widowx_spoon_on_towel,0,0,0,0,0,60,put the spoon on the towel,,results/videos_openvla_fixed/base/spoon_on_towel/episode_00_failure.mp4
+base,widowx_spoon_on_towel,1,1,1,0,0,60,put the spoon on the towel,,results/videos_openvla_fixed/base/spoon_on_towel/episode_01_failure.mp4
+base,widowx_spoon_on_towel,2,2,2,0,0,60,put the spoon on the towel,,results/videos_openvla_fixed/base/spoon_on_towel/episode_02_failure.mp4
+base,widowx_spoon_on_towel,3,3,3,0,0,60,put the spoon on the towel,,results/videos_openvla_fixed/base/spoon_on_towel/episode_03_failure.mp4
+base,widowx_spoon_on_towel,4,4,4,0,0,60,put the spoon on the towel,,results/videos_openvla_fixed/base/spoon_on_towel/episode_04_failure.mp4
+base,widowx_spoon_on_towel,5,5,5,0,0,60,put the spoon on the towel,,results/videos_openvla_fixed/base/spoon_on_towel/episode_05_failure.mp4
+base,widowx_spoon_on_towel,6,6,6,0,0,60,put the spoon on the towel,,results/videos_openvla_fixed/base/spoon_on_towel/episode_06_failure.mp4
+base,widowx_spoon_on_towel,7,7,7,0,0,60,put the spoon on the towel,,results/videos_openvla_fixed/base/spoon_on_towel/episode_07_failure.mp4
+base,widowx_spoon_on_towel,8,8,8,0,0,60,put the spoon on the towel,,results/videos_openvla_fixed/base/spoon_on_towel/episode_08_failure.mp4
+base,widowx_spoon_on_towel,9,9,9,0,0,60,put the spoon on the towel,,results/videos_openvla_fixed/base/spoon_on_towel/episode_09_failure.mp4
+base,widowx_put_eggplant_in_basket,0,0,0,0,0,120,put eggplant into yellow basket,,results/videos_openvla_fixed/base/put_eggplant_in_basket/episode_00_failure.mp4
+base,widowx_put_eggplant_in_basket,1,1,1,0,0,120,put eggplant into yellow basket,,results/videos_openvla_fixed/base/put_eggplant_in_basket/episode_01_failure.mp4
+base,widowx_put_eggplant_in_basket,2,2,2,0,0,120,put eggplant into yellow basket,,results/videos_openvla_fixed/base/put_eggplant_in_basket/episode_02_failure.mp4
+base,widowx_put_eggplant_in_basket,3,3,3,0,0,120,put eggplant into yellow basket,,results/videos_openvla_fixed/base/put_eggplant_in_basket/episode_03_failure.mp4
+base,widowx_put_eggplant_in_basket,4,4,4,0,0,120,put eggplant into yellow basket,,results/videos_openvla_fixed/base/put_eggplant_in_basket/episode_04_failure.mp4
+base,widowx_put_eggplant_in_basket,5,5,5,0,0,120,put eggplant into yellow basket,,results/videos_openvla_fixed/base/put_eggplant_in_basket/episode_05_failure.mp4
+base,widowx_put_eggplant_in_basket,6,6,6,0,0,120,put eggplant into yellow basket,,results/videos_openvla_fixed/base/put_eggplant_in_basket/episode_06_failure.mp4
+base,widowx_put_eggplant_in_basket,7,7,7,0,0,120,put eggplant into yellow basket,,results/videos_openvla_fixed/base/put_eggplant_in_basket/episode_07_failure.mp4
+base,widowx_put_eggplant_in_basket,8,8,8,0,0,120,put eggplant into yellow basket,,results/videos_openvla_fixed/base/put_eggplant_in_basket/episode_08_failure.mp4
+base,widowx_put_eggplant_in_basket,9,9,9,0,0,120,put eggplant into yellow basket,,results/videos_openvla_fixed/base/put_eggplant_in_basket/episode_09_failure.mp4

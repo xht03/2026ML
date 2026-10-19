@@ -1,0 +1,11 @@
+model,task,episode,obj_episode_id,env_seed,model_seed,success,steps,instruction,error,video
+final,widowx_spoon_on_towel,0,0,0,0,0,60,put the spoon on the towel,,results/videos_strict_t1_formal/final/spoon_on_towel/episode_00_failure.mp4
+final,widowx_spoon_on_towel,1,1,1,0,0,60,put the spoon on the towel,,results/videos_strict_t1_formal/final/spoon_on_towel/episode_01_failure.mp4
+final,widowx_spoon_on_towel,2,2,2,0,0,60,put the spoon on the towel,,results/videos_strict_t1_formal/final/spoon_on_towel/episode_02_failure.mp4
+final,widowx_spoon_on_towel,3,3,3,0,0,60,put the spoon on the towel,,results/videos_strict_t1_formal/final/spoon_on_towel/episode_03_failure.mp4
+final,widowx_spoon_on_towel,4,4,4,0,0,60,put the spoon on the towel,,results/videos_strict_t1_formal/final/spoon_on_towel/episode_04_failure.mp4
+final,widowx_spoon_on_towel,5,5,5,0,0,60,put the spoon on the towel,,results/videos_strict_t1_formal/final/spoon_on_towel/episode_05_failure.mp4
+final,widowx_spoon_on_towel,6,6,6,0,0,60,put the spoon on the towel,,results/videos_strict_t1_formal/final/spoon_on_towel/episode_06_failure.mp4
+final,widowx_spoon_on_towel,7,7,7,0,0,60,put the spoon on the towel,,results/videos_strict_t1_formal/final/spoon_on_towel/episode_07_failure.mp4
+final,widowx_spoon_on_towel,8,8,8,0,0,60,put the spoon on the towel,,results/videos_strict_t1_formal/final/spoon_on_towel/episode_08_failure.mp4
+final,widowx_spoon_on_towel,9,9,9,0,0,60,put the spoon on the towel,,results/videos_strict_t1_formal/final/spoon_on_towel/episode_09_failure.mp4

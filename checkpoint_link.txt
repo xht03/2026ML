@@ -1,0 +1,21 @@
+Final checkpoint: LoRA adapter
+- File: adapter_model.safetensors (约 484 MB) + adapter_config.json
+- Local path: checkpoints/openvla_lora/adapters/openvla-7b+bridge_subset+b8+lr-0.0005+lora-r32+dropout-0.0--lora-r32-3000
+- Download link: <待上传后填写有效链接>
+- Base model: openvla/openvla-7b (HuggingFace; 15 GB, 3 个 safetensors 分片)
+- Requires: peft==0.11.1, transformers==4.40.1, tokenizers==0.19.1
+
+Loading:
+    from transformers import AutoModelForVision2Seq
+    from peft import PeftModel
+
+    base = AutoModelForVision2Seq.from_pretrained(
+        "openvla/openvla-7b", torch_dtype=torch.bfloat16,
+        low_cpu_mem_usage=True, trust_remote_code=True,
+    ).cuda()
+    model = PeftModel.from_pretrained(base, "path/to/adapter")
+
+Normalization:
+    Base 使用预训练 config.json 中的 norm_stats["bridge_orig"]；
+    Final 使用训练 run 目录的 dataset_statistics.json（{"bridge_subset": {...}}），
+    推理时覆盖 model.base_model.model.norm_stats["bridge_orig"]。

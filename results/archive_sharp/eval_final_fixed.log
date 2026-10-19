@@ -1,0 +1,104 @@
+/home/xht/MLwork/venv_openvla/lib/python3.10/site-packages/sapien/core/renderer_config.py:4: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+2026-10-19 17:41:44.149859: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-10-19 17:41:44.185855: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-10-19 17:41:44.185892: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-10-19 17:41:44.186912: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-10-19 17:41:44.192374: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX_VNNI AMX_TILE AMX_INT8 AMX_BF16 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-10-19 17:41:44.834406: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+[final] loading OpenVLA downloads/openvla-7b ...
+*** policy_setup: widowx_bridge, unnorm_key: bridge_orig ***
+Loading checkpoint shards:   0%|          | 0/3 [00:00<?, ?it/s]Loading checkpoint shards:  33%|███▎      | 1/3 [00:00<00:00,  4.23it/s]Loading checkpoint shards:  67%|██████▋   | 2/3 [00:00<00:00,  4.64it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00,  4.87it/s]Loading checkpoint shards: 100%|██████████| 3/3 [00:00<00:00,  4.76it/s]
+[2026-10-19 17:41:58.655] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:41:58.655] [svulkan2] [warning] Continue without GLFW.
+/home/xht/MLwork/venv_openvla/lib/python3.10/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.get_language_instruction to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.get_language_instruction` for environment variables or `env.get_wrapper_attr('get_language_instruction')` that will search the reminding wrappers.[0m
+  logger.warn(
+/home/xht/MLwork/venv_openvla/lib/python3.10/site-packages/gymnasium/core.py:311: UserWarning: [33mWARN: env.robot_uid to get variables from other wrappers is deprecated and will be removed in v1.0, to get this variable you can do `env.unwrapped.robot_uid` for environment variables or `env.get_wrapper_attr('robot_uid')` that will search the reminding wrappers.[0m
+  logger.warn(
+[2026-10-19 17:42:18.385] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:42:18.385] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:42:37.689] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:42:37.689] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:42:57.110] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:42:57.110] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:43:16.648] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:43:16.648] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:43:36.185] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:43:36.185] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:43:55.713] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:43:55.714] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:44:15.172] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:44:15.172] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:44:34.115] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:44:34.115] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:44:53.611] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:44:53.611] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:45:12.921] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:45:12.921] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:45:51.242] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:45:51.242] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:46:28.706] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:46:28.706] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:47:07.215] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:47:07.215] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:47:45.418] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:47:45.418] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:48:23.470] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:48:23.470] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:49:01.733] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:49:01.733] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:49:40.131] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:49:40.131] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:50:18.453] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:50:18.453] [svulkan2] [warning] Continue without GLFW.
+[2026-10-19 17:50:57.310] [svulkan2] [error] GLFW error: X11: Failed to open display 
+[2026-10-19 17:50:57.310] [svulkan2] [warning] Continue without GLFW.
+*** loaded LoRA adapter: checkpoints/openvla_lora/adapters/openvla-7b+bridge_subset+b8+lr-0.0005+lora-r32+dropout-0.0--lora-r32-3000 ***
+*** overrode norm stats from checkpoints/openvla_lora/runs/openvla-7b+bridge_subset+b8+lr-0.0005+lora-r32+dropout-0.0--lora-r32-3000/dataset_statistics.json ***
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_spoon_on_towel ep 00 success=False steps=60 (19.7s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_spoon_on_towel ep 01 success=False steps=60 (19.3s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_spoon_on_towel ep 02 success=False steps=60 (19.4s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_spoon_on_towel ep 03 success=False steps=60 (19.5s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_spoon_on_towel ep 04 success=False steps=60 (19.5s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_spoon_on_towel ep 05 success=False steps=60 (19.5s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_spoon_on_towel ep 06 success=False steps=60 (19.5s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_spoon_on_towel ep 07 success=False steps=60 (18.9s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_spoon_on_towel ep 08 success=False steps=60 (19.5s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_spoon_on_towel ep 09 success=False steps=60 (19.3s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_put_eggplant_in_basket ep 00 success=False steps=120 (38.3s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_put_eggplant_in_basket ep 01 success=False steps=120 (37.5s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_put_eggplant_in_basket ep 02 success=False steps=120 (38.5s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_put_eggplant_in_basket ep 03 success=False steps=120 (38.2s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_put_eggplant_in_basket ep 04 success=False steps=120 (38.1s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_put_eggplant_in_basket ep 05 success=False steps=120 (38.3s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_put_eggplant_in_basket ep 06 success=False steps=120 (38.4s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_put_eggplant_in_basket ep 07 success=False steps=120 (38.3s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_put_eggplant_in_basket ep 08 success=False steps=120 (38.9s)
+Control mode:  arm_pd_ee_target_delta_pose_align2_gripper_pd_joint_pos
+[final] widowx_put_eggplant_in_basket ep 09 success=False steps=120 (38.2s)
+
+=== summary ===
+widowx_spoon_on_towel: 0/10 = 0.0%
+widowx_put_eggplant_in_basket: 0/10 = 0.0%
+B-SimplerScore: 0.0
+EXIT=0

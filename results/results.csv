@@ -1,0 +1,5 @@
+model,task,successes,episodes,success_rate
+base,widowx_spoon_on_towel,2,10,0.2000
+base,widowx_put_eggplant_in_basket,2,10,0.2000
+final,widowx_spoon_on_towel,1,10,0.1000
+final,widowx_put_eggplant_in_basket,5,10,0.5000

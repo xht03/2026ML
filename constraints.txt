@@ -1,0 +1,4 @@
+# 锁定与 RTX 5090 (sm_120) 兼容的关键版本，防止 pip 升级到不兼容的默认 wheel
+torch==2.7.1+cu128
+torchvision==0.22.1+cu128
+numpy==1.24.4

@@ -1,0 +1,4 @@
+model,split,batches,batch_size,mean_loss,min_loss,max_loss
+base,val,20,4,11.15725,8.33728,13.64239
+final3000,val,20,4,3.17252,2.44294,3.60043
+final8000,val,20,4,3.67002,2.67315,4.48959
