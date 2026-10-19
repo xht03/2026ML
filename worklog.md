@@ -38,7 +38,7 @@
 - 2026-10-19 15:24–16:12：正式 LoRA 训练 3000 个优化步（batch 2 × 累积 4），48 分钟；
   loss 约 11.87 → 3.0–3.3；adapter 484 MB，保存在 `checkpoints/openvla_lora/`。
 - 2026-10-19 16:14–16:33：正式评测完成。
-  - sharp（无模糊、修正 prompt）：Base/Final 均 0/10，归档在 `results/archive_sharp/`。
+  - sharp（无模糊、修正 prompt）：Base/Final 均 0/10，归档在 `results/archive/sharp_baseline/`。
   - 域适应：在开发状态 id 10–12 上选择 sigma=1.5 高斯模糊（Base dev 2/6、Final dev 1/6）；
     正式状态 0–9 未参与选择。
   - 最终正式结果：Base T1 2/10、T2 2/10、B-SimplerScore 20.0；
@@ -48,7 +48,7 @@
 - 2026-10-19：报告生成完成（python-docx → LibreOffice）。
 - 2026-10-19：发现社区 OpenVLA 适配器漏掉训练 prompt 模板
   （`In: What action should the robot take to ...?\nOut:`）；修正后重跑 40 个正式 episode。
-  修正前后 Base/Final 均为 0/10；旧裸 prompt 结果归档在 `results/archive_bareprompt/`。
+  修正前后 Base/Final 均为 0/10；旧裸 prompt 结果归档在 `results/archive/bare_prompt/`。
 - 2026-10-19：真实 BridgeData 帧诊断：OpenVLA 预测动作与 GT 几乎一致，夹爪开/闭也正确，
   证明 prompt/动作解码/反归一化/图像预处理正确；仿真 0 成功归因于域差异与 LoRA 规模。
 - 2026-10-19：带图像增强（image_aug=True）的第二次 LoRA 训练完成；加模糊后 dev 1/6，

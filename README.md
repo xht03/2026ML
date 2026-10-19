@@ -9,8 +9,16 @@
 5. 汇总成功率、B-SimplerScore，并结合视频分析。
 
 > 本项目为 B 类（工程实践型），不要求 Final 一定优于 Base；重点是真实、可复现的完整流程与有证据的分析。
->
-> 项目成员：胥昊天（组长）、曹奕伦、徐厚泽、彭泽宇、刘翔。
+
+## 项目成员与分工
+
+| 成员 | 学号 | 分工 |
+|---|---|---|
+| 胥昊天（组长） | 26213050409 | 项目统筹、环境/数据管线、LoRA 训练与最终评测、报告整合 |
+| 曹奕伦 | 26113050003 | BridgeData 筛选与 RLDS 构建、训练日志与验证 loss 分析 |
+| 徐厚泽 | 26113050327 | SimplerEnv 评测脚本、初始状态清单与逐 episode 结果汇总 |
+| 彭泽宇 | 26213050317 | 视频采集与代表性 episode 分析、失败原因整理 |
+| 刘翔 | 26113050287 | 模型/文献调研、复现文档与报告校对 |
 
 ## 1. 模型与合规性
 
@@ -42,12 +50,15 @@ MLwork/
 │   ├── train_openvla.py
 │   └── evaluate_openvla.py
 ├── results/
-│   ├── train_log.txt
-│   ├── episodes_openvla.csv
-│   ├── episodes_openvla_final.csv
-│   ├── results_openvla.csv
-│   ├── results_openvla_final.csv
-│   └── videos_openvla/
+│   ├── README.md            # 结果目录说明
+│   ├── results.csv          # Base/Final 汇总
+│   ├── episodes.csv         # 40 个 episode 明细
+│   ├── eval_base.log
+│   ├── eval_final.log
+│   ├── videos/              # Base/Final × T1/T2 共 40 个
+│   ├── train/               # train_log.txt, val_loss.csv
+│   ├── analysis/            # dev_selection.csv, diagnostics_real_bridge.txt
+│   └── archive/             # sharp/bare-prompt/ablation 原始记录
 ├── checkpoint_link.txt      # Final adapter 下载链接（提交时填写）
 └── third_party/             # gitignore；按下方版本克隆
 ```
@@ -142,12 +153,12 @@ WANDB_MODE=disabled venv_openvla/bin/torchrun --standalone --nnodes 1 --nproc-pe
   --max_steps 3000 --save_steps 3000 \
   --learning_rate 5e-4 --lora_rank 32 \
   --image_aug False --shuffle_buffer_size 100 \
-  --run_id_note lora-r32-3000 > results/train_log.txt 2>&1
+  --run_id_note lora-r32-3000 > results/train/train_log.txt 2>&1
 ```
 
 - 等效 batch size = 2 × 4 = 8；固定 3000 个优化步。
 - 实际耗时约 48 分钟（RTX 5090，单卡）。
-- 训练 loss 见 `results/train_log.txt`；Final adapter 约 484 MB。
+- 训练 loss 见 `results/train/train_log.txt`；Final adapter 约 484 MB。
 - 本项目不保存合并后的 15 GB 全模型；Final = Base + LoRA adapter。
 
 ## 6. 评测
@@ -165,7 +176,7 @@ WANDB_MODE=disabled venv_openvla/bin/torchrun --standalone --nnodes 1 --nproc-pe
 - 图像预处理：Base/Final 统一使用高斯模糊 `sigma=1.5`（`configs/policy_preprocess.json`），
   用于缩小真实相机与仿真渲染的锐度差异；sigma 只在开发状态 object id 10–12 上选择，
   正式状态 0–9 未参与选择。模糊是 policy 的输入预处理，环境本身不变。
-- 环境 seed 与模型 seed 分别记录在 `episodes_openvla*.csv`。
+- 环境 seed 与模型 seed 分别记录在 `results/episodes.csv`。
 - Base 与 Final 在独立进程中加载、评测。
 
 ### 6.2 命令
@@ -194,8 +205,8 @@ venv_openvla/bin/python scripts/evaluate_openvla.py \
   --norm-stats "$RUN/dataset_statistics.json" \
   --split formal \
   --blur-sigma 1.5 \
-  --episodes-csv results/episodes_openvla_final.csv \
-  --summary-csv results/results_openvla_final.csv
+  --episodes-csv results/episodes.csv \
+  --summary-csv results/results.csv
 ```
 
 ### 6.3 加载 Final adapter
@@ -211,7 +222,7 @@ base = AutoModelForVision2Seq.from_pretrained(
 model = PeftModel.from_pretrained(base, "path/to/adapter")
 ```
 
-`configs/eval_states.json`、`results/episodes_openvla*.csv` 和视频共同构成逐 episode 记录。
+`configs/eval_states.json`、`results/episodes.csv` 和视频共同构成逐 episode 记录。
 
 **重要修正**：社区适配器最初直接把 `task_description` 传给 processor，漏掉了 OpenVLA 训练时的
 prompt 模板：
@@ -221,9 +232,9 @@ In: What action should the robot take to {instruction}?
 Out:
 ```
 
-修正后，我们重跑了 Base/Final 的 40 个正式 episode（当前 `results/episodes_openvla*.csv`
+修正后，我们重跑了 Base/Final 的 40 个正式 episode（当前 `results/episodes.csv`
 即为修正 prompt 后的结果）。修正前的裸 prompt 结果归档在
-`results/archive_bareprompt/`，不用于最终结论。
+`results/archive/bare_prompt/`，不用于最终结论。
 
 ## 7. 结果
 
@@ -239,13 +250,13 @@ sigma 只在**开发状态** object id 10–12（T1/T2）上选择，正式评�
 Final − Base 变化：**+10.0 个百分点**（T1 −10.0，T2 +30.0）。
 
 作为消融：同样修正 prompt、但不加模糊时，Base/Final 在正式 40 个 episode 上均为 0/10，
-归档在 `results/archive_sharp/`；裸 prompt 的旧结果在 `results/archive_bareprompt/`。
+归档在 `results/archive/sharp_baseline/`；裸 prompt 的旧结果在 `results/archive/bare_prompt/`。
 
 ### 7.0 接口验证（重要）
 
 在把 0 成功归因于模型能力之前，我们先验证了动作接口。用真实 BridgeData 的一帧图像和指令
 喂给同一个 OpenVLA，与数据集中的真实动作对比（脚本 `scripts/check_openvla_real.py`，
-输出 `results/diagnostics_real_bridge.txt`）：
+输出 `results/analysis/diagnostics_real_bridge.txt`）：
 
 | 帧 | 真实动作（前 6 维 + 夹爪） | OpenVLA 预测 |
 |---|---|---|
@@ -315,19 +326,19 @@ T1 没有改善（dev 1/3 vs 1/3），且正式 T1 为 **0/10**，比当前 Fina
 
 8000 步的训练 loss 更低（约 2.6），但验证 loss 反而升高；开发集上 T1 1/3、T2 0/3，
 与 3000 步完全相同。因此 T1 的瓶颈不是“训练步数不够”，继续训练会过拟合；
-我们保留 3000 步 Final，8000 步 adapter 仅作为消融（`results/train_log_8000.txt`、
-`results/val_loss.csv`）。
+我们保留 3000 步 Final，8000 步 adapter 仅作为消融（`results/archive/ablations/train_log_8000.txt`、
+`results/train/val_loss.csv`）。
 
 ### 7.2 代表性视频
 
-视频位于 `results/videos_openvla/`，覆盖成功与失败样例：
+视频位于 `results/videos/`，覆盖成功与失败样例：
 
 | 视频 | 模型 | 任务 | 结果 | 观察 |
 |---|---|---|---|---|
-| `results/videos_openvla/base/spoon_on_towel/episode_03_success.mp4` | Base | T1 | success | 抓起勺子并放到毛巾上（31 步） |
-| `results/videos_openvla/base/put_eggplant_in_basket/episode_02_success.mp4` | Base | T2 | success | 抓起茄子放入篮子（23 步） |
-| `results/videos_openvla/final/put_eggplant_in_basket/episode_00_success.mp4` | Final | T2 | success | 快速抓起茄子放入篮子（16 步） |
-| `results/videos_openvla/final/spoon_on_towel/episode_00_failure.mp4` | Final | T1 | failure | 接近勺子但未稳定抓取/放置 |
+| `results/videos/base/spoon_on_towel/episode_03_success.mp4` | Base | T1 | success | 抓起勺子并放到毛巾上（31 步） |
+| `results/videos/base/put_eggplant_in_basket/episode_02_success.mp4` | Base | T2 | success | 抓起茄子放入篮子（23 步） |
+| `results/videos/final/put_eggplant_in_basket/episode_00_success.mp4` | Final | T2 | success | 快速抓起茄子放入篮子（16 步） |
+| `results/videos/final/spoon_on_towel/episode_00_failure.mp4` | Final | T1 | failure | 接近勺子但未稳定抓取/放置 |
 
 ## 8. 局限
 

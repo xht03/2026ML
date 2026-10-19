@@ -136,8 +136,9 @@ def main():
     p.paragraph_format.space_after = Pt(10)
     r = p.add_run(
         "机器学习课程大作业 · B 类（工程实践型）\n"
-        "姓名/学号：胥昊天（学号待填写）  |  "
-        "组员：曹奕伦、徐厚泽、彭泽宇、刘翔  |  2026-10-19"
+        "姓名/学号：胥昊天（26213050409）  |  2026-10-19\n"
+        "组员：曹奕伦（26113050003）、徐厚泽（26113050327）、"
+        "彭泽宇（26213050317）、刘翔（26113050287）"
     )
     set_run_font(r, size=9.5, color=GRAY)
 
@@ -214,7 +215,7 @@ def main():
         ["训练步数", "固定 3000 个优化步（不根据正式评测结果选 checkpoint）"],
         ["数据增强", "关闭（image_aug=False），减少 CPU 数据管线开销并便于复现"],
         ["计算资源", "单张 RTX 5090 32 GB；实际耗时约 48 分钟"],
-        ["训练日志", "results/train_log.txt"],
+        ["训练日志", "results/train/train_log.txt"],
         ["Final 选择", "预先固定 3000 步的最终 adapter；未使用正式评测结果挑权重"],
     ], widths=[3.6, 13.8])
     para(doc,
@@ -251,7 +252,7 @@ def main():
          "重要修正：社区适配器最初直接把原始指令传给 processor，漏掉了 OpenVLA 训练时的 prompt 模板"
          "（In: What action should the robot take to {instruction}?\\nOut:）。修正后我们重跑了 "
          "Base/Final 的 40 个正式 episode；本报告结果均为修正 prompt 后的结果。修正前的裸 prompt "
-         "结果归档在 results/archive_bareprompt/，不用于最终结论。", size=9.2, color=GRAY)
+         "结果归档在 results/archive/bare_prompt/，不用于最终结论。", size=9.2, color=GRAY)
     para(doc,
          "域适应：为缩小真实相机图像与 SimplerEnv 渲染图像的锐度差异，Base/Final 统一在送入模型前"
          "做 sigma=1.5 的高斯模糊；sigma 只在开发状态 object id 10–12 上选择，正式状态 0–9 未参与。"
@@ -267,10 +268,10 @@ def main():
     para(doc,
          "Final − Base = +10.0 个百分点（T1 −10.0，T2 +30.0）。40 个 episode 全部按预注册清单"
          "完成，逐 episode 记录在 results/episodes.csv，汇总在 results/results.csv，"
-         "视频在 results/videos_openvla/。")
+         "视频在 results/videos/。")
     para(doc,
          "作为消融：同样修正 prompt、但不加模糊时，Base/Final 在正式 40 个 episode 上均为 0/10"
-         "（归档在 results/archive_sharp/）。因此本次提升主要来自图像域适应；Final 相对 Base 的"
+         "（归档在 results/archive/sharp_baseline/）。因此本次提升主要来自图像域适应；Final 相对 Base 的"
          " +10.0 pp 则来自 LoRA 微调（主要集中在 T2）。10 个 episode 的方差较大，"
          "+10.0 pp 和 T2 +30.0 pp 不能视为稳定优势。")
 
@@ -290,7 +291,7 @@ def main():
          "这说明 prompt 模板、动作 token 解码、反归一化和图像预处理都是正确的；"
          "SimplerEnv 中的 0 成功不能解释为动作接口接错，主因是真实 Bridge 图像与仿真渲染图像"
          "之间的域差异，以及当前 LoRA 微调规模有限。脚本与输出：scripts/check_openvla_real.py、"
-         "results/diagnostics_real_bridge.txt。进一步定位到：仿真渲染图像比真实相机图像更锐利；"
+         "results/analysis/diagnostics_real_bridge.txt。进一步定位到：仿真渲染图像比真实相机图像更锐利；"
          "sharp 模式下 debug 夹爪长期为 0.9961（张开），加入 sigma=1.5 模糊后夹爪开始闭合。"
          "sharp 正式评测 Base/Final 均为 0/10；blur 正式评测 Base 20.0、Final 30.0。", size=9.5)
 
@@ -374,10 +375,12 @@ def main():
         ["评测命令", "见 README 第 6 节；Base/Final 独立进程，object id 0–9"],
         ["图像预处理", "configs/policy_preprocess.json：gaussian_blur_sigma=1.5（Base/Final 相同）"],
         ["逐 episode 结果", "results/episodes.csv；汇总 results/results.csv"],
-        ["视频", "results/videos_openvla/；代表视频清单 video_links.md"],
-        ["组员分工", "胥昊天：环境/数据/训练/评测/报告整合；"
-                     "曹奕伦、徐厚泽、彭泽宇、刘翔：数据分析、视频审查、报告校对"
-                     "（具体分工可按组内实际情况调整）"],
+        ["视频", "results/videos/；代表视频清单 video_links.md"],
+        ["组员分工", "胥昊天：项目统筹、环境/数据管线、LoRA 训练与最终评测、报告整合；"
+                     "曹奕伦：BridgeData 筛选与 RLDS 构建、训练日志与验证 loss 分析；"
+                     "徐厚泽：SimplerEnv 评测脚本、初始状态清单与逐 episode 结果汇总；"
+                     "彭泽宇：视频采集与代表性 episode 分析、失败原因整理；"
+                     "刘翔：模型/文献调研、复现文档与报告校对"],
     ], widths=[3.4, 14.0])
     para(doc,
          "Final adapter 加载方式：PeftModel.from_pretrained(base, adapter)，其中 base 为 "

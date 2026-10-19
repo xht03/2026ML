@@ -49,7 +49,7 @@
   - 数据：`--data_root_dir data/bridge_subset/tfds --dataset_name bridge_subset`
   - LoRA rank 32、target_modules=all-linear；可训练参数 110,828,288（1.45%）。
   - batch 2 × 梯度累积 4 = 等效 batch 8；固定 3000 个优化步；lr 5e-4；image_aug=False。
-  - 关闭 wandb，loss 写入 `results/train_log.txt`。
+  - 关闭 wandb，loss 写入 `results/train/train_log.txt`。
 - [x] 10 步 / 20 步 smoke：无 OOM，吞吐约 4 batch/s（batch 2）。
 - [x] 正式训练完成：48 分钟，loss 约 11.87 → 3.0–3.3，action accuracy 约 0.14 → 0.20–0.25。
 - [x] 保存 LoRA adapter（484 MB）、processor、`dataset_statistics.json`。
@@ -62,7 +62,7 @@
 - [x] 固定 `configs/eval_states.json`：T1/T2 各 10 个 object id 0–9，robot init、env seed、model seed 全部记录。
 - [x] Base 与 Final 分别用独立进程运行 `scripts/evaluate_openvla.py`。
 - [x] 输出：
-  - `results/episodes_openvla.csv` / `results/episodes_openvla_final.csv`（合并为 `results/episodes.csv`）
+  - `results/episodes.csv` / `results/episodes.csv`（合并为 `results/episodes.csv`）
   - `results/results.csv`：成功数/成功率/B-SimplerScore
 - [x] 40 个 episode 的视频全部保存（约 8.6 MB）。
 - **结果**：
@@ -70,7 +70,7 @@
   - Base：T1 2/10，T2 2/10，B-SimplerScore 20.0
   - Final：T1 1/10，T2 5/10，B-SimplerScore 30.0
   - Final − Base = +10.0 个百分点（T1 −10，T2 +30）
-  - 消融：sharp（无模糊）Base/Final 均 0/10，归档在 `results/archive_sharp/`。
+  - 消融：sharp（无模糊）Base/Final 均 0/10，归档在 `results/archive/sharp_baseline/`。
 - **验收**：40 个 episode 全部有记录；Base/Final 初始状态完全一致；无人工干预、无筛除。
 
 ### 阶段 E：分析与交付
@@ -94,7 +94,7 @@
   - 8000 步训练 loss 更低（约 2.6），但验证 loss 升高，属于过拟合；
   - 8000 步 adapter 开发集：T1 1/3、T2 0/3，与 3000 步完全相同。
 - **结论**：保留 3000 步 Final；T1 的瓶颈不是“训练步数不够”，继续训练会过拟合。
-  8000 步 adapter 仅作为消融（`results/train_log_8000.txt`、`results/val_loss.csv`）。
+  8000 步 adapter 仅作为消融（`results/archive/ablations/train_log_8000.txt`、`results/train/val_loss.csv`）。
 
 ## 4. 仓库结构（清理后）
 
@@ -120,10 +120,15 @@ MLwork/
 │   ├── SimplerEnv/             # 含 ManiSkill2_real2sim、openvla policy
 │   └── openvla/                # 官方训练代码
 ├── results/
-│   ├── episodes_openvla.csv
-│   ├── results_openvla.csv
-│   ├── train_log.txt
-│   └── videos_openvla/
+│   ├── README.md
+│   ├── results.csv
+│   ├── episodes.csv
+│   ├── eval_base.log
+│   ├── eval_final.log
+│   ├── videos/
+│   ├── train/
+│   ├── analysis/
+│   └── archive/
 └── checkpoint_link.txt
 ```
 

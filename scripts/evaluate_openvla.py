@@ -130,9 +130,9 @@ def main() -> int:
         default="widowx_spoon_on_towel,widowx_put_eggplant_in_basket",
     )
     parser.add_argument("--config", default="configs/eval_states.json")
-    parser.add_argument("--episodes-csv", default="results/episodes_openvla.csv")
-    parser.add_argument("--summary-csv", default="results/results_openvla.csv")
-    parser.add_argument("--video-dir", default="results/videos_openvla")
+    parser.add_argument("--episodes-csv", default="results/episodes.csv")
+    parser.add_argument("--summary-csv", default="results/results.csv")
+    parser.add_argument("--video-dir", default="results/videos")
     parser.add_argument("--max-episodes", type=int, default=None)
     args = parser.parse_args()
 
