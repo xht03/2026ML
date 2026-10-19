@@ -1,7 +1,12 @@
 Final checkpoint: LoRA adapter
-- File: adapter_model.safetensors (约 484 MB) + adapter_config.json
-- Local path: checkpoints/openvla_lora/adapters/openvla-7b+bridge_subset+b8+lr-0.0005+lora-r32+dropout-0.0--lora-r32-3000
-- Download link: <待上传后填写有效链接>
+- Release page: https://github.com/xht03/2026ML/releases/tag/v1.0-lora
+- Direct download (zip, 484,464,039 bytes):
+  https://github.com/xht03/2026ML/releases/download/v1.0-lora/2026ML-openvla-lora.zip
+- SHA256: 0e2c5e803ecdee546f413a8b19ed80c08daceb61bac3807fcb76626955cfc29c
+- Zip contents: adapter_model.safetensors, adapter_config.json,
+  dataset_statistics.json, README.md
+- Local path (server, for reference):
+  checkpoints/openvla_lora/adapters/openvla-7b+bridge_subset+b8+lr-0.0005+lora-r32+dropout-0.0--lora-r32-3000
 - Base model: openvla/openvla-7b (HuggingFace; 15 GB, 3 个 safetensors 分片)
 - Requires: peft==0.11.1, transformers==4.40.1, tokenizers==0.19.1
 
@@ -17,5 +22,10 @@ Loading:
 
 Normalization:
     Base 使用预训练 config.json 中的 norm_stats["bridge_orig"]；
-    Final 使用训练 run 目录的 dataset_statistics.json（{"bridge_subset": {...}}），
+    Final 使用 zip 内的 dataset_statistics.json（{"bridge_subset": {...}}），
     推理时覆盖 model.base_model.model.norm_stats["bridge_orig"]。
+
+Inference preprocessing:
+    prompt = "In: What action should the robot take to {instruction}?\nOut:"
+    observation: 224x224 RGB, Gaussian blur sigma=1.5
+    action: 7-DoF [x,y,z,roll,pitch,yaw,gripper], gripper 1=open/0=close

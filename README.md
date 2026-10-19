@@ -41,7 +41,7 @@ MLwork/
 ├── scripts/                 # 数据、训练、评测、报告生成脚本
 ├── report/REPORT.pdf        # 6 页报告
 ├── results/                 # 最终结果/训练/分析/归档（见第 7 节）
-├── checkpoint_link.txt      # Final adapter 下载链接（待上传）
+├── checkpoint_link.txt      # Final adapter 下载链接（GitHub Release）
 └── third_party/             # gitignore；按第 4 节版本克隆
 ```
 
@@ -362,7 +362,8 @@ T1 没有改善（dev 1/3 vs 1/3），且正式 T1 为 **0/10**，比当前 Fina
 - 实验报告：`report/REPORT.pdf`（6 页，含数据样本、接口验证、案例分析和参考文献）。
 - 结果文件：`results/results.csv`、`results/episodes.csv`、`results/videos/`、
   `results/train/`、`results/analysis/`、`results/archive/`。
-- Final adapter 下载链接：见 `checkpoint_link.txt`（待上传后回填）。
+- Final adapter：[GitHub Release v1.0-lora](https://github.com/xht03/2026ML/releases/tag/v1.0-lora)
+  （zip 直接下载：https://github.com/xht03/2026ML/releases/download/v1.0-lora/2026ML-openvla-lora.zip）。
 - 基础模型：`openvla/openvla-7b`。
 - 依赖与版本：见第 4 节。
 - 代表视频：见 7.2；全部 40 个视频在 `results/videos/`。

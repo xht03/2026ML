@@ -367,7 +367,10 @@ def main():
     heading(doc, "8. 复现信息与分工")
     table(doc, ["项目", "内容"], [
         ["公开代码仓库", "https://github.com/xht03/2026ML"],
-        ["Final checkpoint", "LoRA adapter，约 484 MB；下载链接见 checkpoint_link.txt（待上传）"],
+        ["Final checkpoint", "LoRA adapter，约 484 MB；GitHub Release v1.0-lora："
+                             "https://github.com/xht03/2026ML/releases/tag/v1.0-lora；"
+                             "zip：https://github.com/xht03/2026ML/releases/download/"
+                             "v1.0-lora/2026ML-openvla-lora.zip"],
         ["Base 模型", "openvla/openvla-7b（Hugging Face）"],
         ["关键依赖", "PyTorch 2.7.1+cu128、transformers 4.40.1、tokenizers 0.19.1、timm 0.9.10、"
                      "peft 0.11.1、TensorFlow 2.15 / TFDS 4.9.4、SAPIEN 2.2.2"],
