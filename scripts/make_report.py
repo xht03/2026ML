@@ -380,7 +380,7 @@ def main():
                      "曹奕伦：BridgeData 筛选与 RLDS 构建、训练日志与验证 loss 分析；"
                      "徐厚泽：SimplerEnv 评测脚本、初始状态清单与逐 episode 结果汇总；"
                      "彭泽宇：视频采集与代表性 episode 分析、失败原因整理；"
-                     "刘翔：模型/文献调研、复现文档与报告校对"],
+                     "刘翔：环境部署、模型/文献调研、复现文档与报告校对"],
     ], widths=[3.4, 14.0])
     para(doc,
          "Final adapter 加载方式：PeftModel.from_pretrained(base, adapter)，其中 base 为 "

@@ -14,11 +14,11 @@
 
 | 成员 | 学号 | 分工 |
 |---|---|---|
-| 胥昊天（组长） | 26213050409 | 项目统筹、环境/数据管线、LoRA 训练与最终评测、报告整合 |
+| 胥昊天 | 26213050409 | 项目统筹、环境/数据管线、LoRA 训练与最终评测、报告整合 |
 | 曹奕伦 | 26113050003 | BridgeData 筛选与 RLDS 构建、训练日志与验证 loss 分析 |
 | 徐厚泽 | 26113050327 | SimplerEnv 评测脚本、初始状态清单与逐 episode 结果汇总 |
 | 彭泽宇 | 26213050317 | 视频采集与代表性 episode 分析、失败原因整理 |
-| 刘翔 | 26113050287 | 模型/文献调研、复现文档与报告校对 |
+| 刘翔 | 26113050287 | 环境部署、模型/文献调研、复现文档与报告校对 |
 
 ## 1. 模型与合规性
 
@@ -44,6 +44,22 @@ MLwork/
 ├── checkpoint_link.txt      # Final adapter 下载链接（待上传）
 └── third_party/             # gitignore；按第 4 节版本克隆
 ```
+
+### 主要脚本
+
+| 脚本 | 用途 |
+|---|---|
+| `scripts/env.sh` | 环境变量（HF 镜像、Vulkan ICD、CUDA 设备） |
+| `scripts/download_bridge_subset.py` | 下载 BridgeData 子集 |
+| `scripts/bridge_subset_dataset.py` | TFDS/RLDS builder（被 build_rlds 调用） |
+| `scripts/build_rlds.py` | 生成 RLDS 数据集 |
+| `scripts/check_data.py` | 数据样本与格式检查 |
+| `scripts/train_openvla.py` | LoRA 微调 |
+| `scripts/evaluate_openvla.py` | SimplerEnv T1/T2 评测 |
+| `scripts/eval_val_loss.py` | held-out val loss 诊断（3000/8000 步） |
+| `scripts/check_openvla_real.py` | 真实 Bridge 帧动作接口验证 |
+| `scripts/make_strict_t1_manifest.py` | 严格 T1 数据消融清单 |
+| `scripts/make_report.py` | 生成 DOCX/PDF 报告 |
 
 ## 3. 数据
 
